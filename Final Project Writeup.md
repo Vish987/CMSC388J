@@ -1,7 +1,7 @@
 # Final Project Writeup 
 
 ## Website
-https://drive.google.com/file/d/1DviOiTXyttI9VNUxRjMy3ikObGxsSJnI/view?usp=sharing
+https://cmsc-388-j-final-project.vercel.app/
 
 ## Description of your final project idea:
 Our final project idea is a personal budget tracker. This will be a web application designed to help users manage and track their personal finances. Users will be able to set up budgets for different categories (e.g., food, entertainment, groceries), log their daily expenses, and visualize their spending habits. The goal is to provide users with a clear overview of their financial health and help them make informed decisions about their spending.

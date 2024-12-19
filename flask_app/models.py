@@ -8,6 +8,7 @@ def load_user(user_id):
     return User.objects(id=user_id).first()
 
 class User(db.Document, UserMixin):
+    username = db.StringField(required=True, unique=True, min_length=8, max_length=20)
     email = db.EmailField(unique=True, required=True)
     password = db.StringField(required=True)
 

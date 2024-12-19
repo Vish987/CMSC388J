@@ -1,6 +1,4 @@
-import pandas as pd
 import plotly.graph_objects as go
-import plotly.express as px
 from flask import Markup
 
 def generate_pie_charts(budgets):
@@ -22,7 +20,6 @@ def generate_pie_charts(budgets):
             titlefont=dict(size=20, weight='bold'),
             textfont=dict(size=15),
             showlegend=True,
-            marker=dict(colors=px.colors.sequential.Sunset[:len(categories)]),
             titleposition='top center'
         )
     )
@@ -42,9 +39,7 @@ def generate_pie_charts(budgets):
             titlefont=dict(size=20, weight='bold'),
             textfont=dict(size=15),
             showlegend=True,
-            marker=dict(colors=px.colors.sequential.Sunset[:len(categories)]),
-            titleposition='top center',
-            textposition='inside'
+            titleposition='top center'
         )
     )
 

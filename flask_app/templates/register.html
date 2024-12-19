@@ -13,6 +13,18 @@
     <form method="POST" action="{{ url_for('users.register') }}">
         {{ form.hidden_tag() }}
         <div class="mb-4">
+            {{ form.username.label(class="block text-gray-700 font-semibold") }}
+            {{ form.username(class="form-input w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500") }}
+            {% if form.username.errors %}
+                <div class="text-red-500 text-sm mt-1">
+                    {% for error in form.username.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
             {{ form.email.label(class="block text-gray-700 font-semibold") }}
             {{ form.email(class="form-input w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500") }}            {% if form.email.errors %}
                 <div class="text-red-500 text-sm mt-1">

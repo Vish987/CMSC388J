@@ -19,19 +19,19 @@
     {{ form.hidden_tag() }}
     <div>
         {{ form.category.label(class="block font-semibold") }}
-        {{ form.category(class="border rounded w-full p-2") }}
+        {{ form.category(class="form-input border rounded w-full p-2") }}
     </div>
     <div>
         {{ form.amount.label(class="block font-semibold") }}
-        <input type="text" name="amount" value="{{ '{:.2f}'.format(budget.amount) }}" class="border rounded w-full p-2" />
+        <input type="text" name="amount" value="{{ '{:.2f}'.format(budget.amount) }}" class="form-input border rounded w-full p-2" />
     </div>
     <div>
         {{ form.start_date.label(class="block font-semibold") }}
-        {{ form.start_date(class="border rounded w-full p-2") }}
+        {{ form.start_date(class="form-input border rounded w-full p-2") }}
     </div>
     <div>
         {{ form.end_date.label(class="block font-semibold") }}
-        {{ form.end_date(class="border rounded w-full p-2") }}
+        {{ form.end_date(class="form-input border rounded w-full p-2") }}
     </div>
     <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Update Budget</button>
 </form>

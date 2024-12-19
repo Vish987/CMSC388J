@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}View Budgets{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Your Budgets</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    {% if pie_chart1 %}
+        <div>
+            {{ pie_chart1|safe }}
+        </div>
+    {% endif %}
+
+    {% if pie_chart2 %}
+        <div>
+            {{ pie_chart2|safe }}
+        </div>
+    {% endif %}
+</div>
+<ul class="space-y-2">
+    {% for budget in budgets %}
+    <li class="box border p-4 rounded shadow flex justify-between items-center">        <div>
+            <p><strong>Category:</strong> {{ budget.category }}</p>
+            <p><strong>Amount:</strong> ${{ "{:.2f}".format(budget.amount) }}</p>
+            <p>
+                <strong>Remaining Amount:</strong> 
+                <span class="{% if budget.remaining_budget() < 0 %}text-red-500 font-bold{% endif %}">
+                    ${{ "{:.2f}".format(budget.remaining_budget()) }}
+                </span>
+            </p>
+        </div>
+        <div class="space-x-4">
+            <a href="{{ url_for('budgets.view_budget', budget_id=budget.id) }}" 
+                class="text-blue-500 hover:text-blue-700 px-4 py-2 border rounded-lg hover:bg-blue-50 transition">
+                <strong>View Details</strong>
+            </a>
+            <a href="{{ url_for('budgets.edit_budget', budget_id=budget.id) }}" 
+                class="text-yellow-500 hover:text-yellow-700 px-4 py-2 border rounded-lg hover:bg-yellow-50 transition">
+                <strong>Edit</strong>
+            </a>
+            <form action="{{ url_for('budgets.delete_budget', budget_id=budget.id) }}" method="POST" 
+                class="inline-block">
+                <button type="submit" 
+                    class="text-red-500 hover:text-red-700 px-4 py-2 border rounded-lg hover:bg-red-50 transition">
+                    <strong>Delete</strong> 
+                </button>
+            </form>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('budgets.create_budget') }}" class="mt-4 inline-block bg-green-500 text-white py-2 px-4 rounded">Create New Budget</a>
+<a href="{{ url_for('expenses.view_expenses') }}" class="mt-4 inline-block bg-purple-500 text-white py-2 px-4 rounded">View All Expenses</a>
+{% endblock %}

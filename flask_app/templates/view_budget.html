@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Budget Details{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Budget Details</h2>
+<div class="border p-4 rounded shadow">
+    <h3 class="text-xl font-semibold">{{ budget.category }}</h3>
+    <p><strong>Amount:</strong> ${{ "{:.2f}".format(budget.amount) }}</p>
+    <p><strong>Start Date:</strong> {{ budget.start_date.strftime('%B %d, %Y') }}</p>
+    <p><strong>End Date:</strong> {{ budget.end_date.strftime('%B %d, %Y') }}</p>
+    <p><strong>Created At:</strong> {{ budget.created_at.strftime('%B %d, %Y') }}</p>
+    <p><strong>Remaining Amount:</strong> ${{ "{:.2f}".format(budget.remaining_budget()) }}</p>
+</div>
+
+<a href="{{ url_for('budgets.view_budgets') }}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded">Back to Budgets</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Budget{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Edit Budget</h2>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="mb-4">
+            <div class="text-{{ 'danger' if 'error' in messages[0] else 'success' }}">
+                {{ messages[0] }}
+            </div>
+        </div>
+    {% endif %}
+{% endwith %}
+
+<form action="{{ url_for('budgets.edit_budget', budget_id=budget.id) }}" method="POST" class="space-y-4">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.category.label(class="block font-semibold") }}
+        {{ form.category(class="border rounded w-full p-2") }}
+    </div>
+    <div>
+        {{ form.amount.label(class="block font-semibold") }}
+        <input type="text" name="amount" value="{{ '{:.2f}'.format(budget.amount) }}" class="border rounded w-full p-2" />
+    </div>
+    <div>
+        {{ form.start_date.label(class="block font-semibold") }}
+        {{ form.start_date(class="border rounded w-full p-2") }}
+    </div>
+    <div>
+        {{ form.end_date.label(class="block font-semibold") }}
+        {{ form.end_date(class="border rounded w-full p-2") }}
+    </div>
+    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Update Budget</button>
+</form>
+{% endblock %}

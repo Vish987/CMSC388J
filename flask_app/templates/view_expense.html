@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Expense Details{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Expense Details</h2>
+<div class="border p-4 rounded shadow">
+    <h3 class="text-xl font-semibold">{{ expense.category }}</h3>
+    <p><strong>Amount:</strong> ${{ "{:.2f}".format(expense.amount) }}</p>
+    <p><strong>Description:</strong> {{ expense.description or 'No description available' }}</p>
+    <p><strong>Date:</strong> {{ expense.date.strftime('%B %d, %Y') }}</p>
+    <p><strong>Created At:</strong> {{ expense.created_at.strftime('%B %d, %Y') }}</p>
+</div>
+
+<a href="{{ url_for('expenses.view_expenses') }}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded">Back to Expenses</a>
+{% endblock %}

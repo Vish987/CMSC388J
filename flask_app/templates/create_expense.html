@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Create Expense{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Create a New Expense</h2>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="mb-4">
+            <div class="text-{{ 'danger' if 'error' in messages[0] else 'success' }}">
+                {{ messages[0] }}
+            </div>
+        </div>
+    {% endif %}
+{% endwith %}
+
+<form action="{{ url_for('expenses.create_expense') }}" method="post" class="space-y-4">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.category.label(class="block font-semibold") }}
+        {{ form.category(class="form-input border rounded w-full p-2") }}
+    </div>
+    <div>
+        {{ form.amount.label(class="block font-semibold") }}
+        {{ form.amount(class="form-input border rounded w-full p-2") }}
+    </div>
+    <div>
+        {{ form.description.label(class="block font-semibold") }}
+        {{ form.description(class="form-input border rounded w-full p-2") }}
+    </div>
+    <div>
+        {{ form.date.label(class="block font-semibold") }}
+        {{ form.date(class="form-input border rounded w-full p-2") }}
+    </div>
+    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Create</button>
+</form>
+{% endblock %}
